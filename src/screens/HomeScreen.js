@@ -1,4 +1,11 @@
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TextInput,
+    View,
+} from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
@@ -17,7 +24,7 @@ const HomeScreen = () => {
     return (
         <SafeAreaView className="bg-white pt-5">
             {/* Header  */}
-            <View className="flex-row pb-3 items-center mx-4 space-x-2">
+            <View className="flex-row pb-3 items-center mx-4 space-x-2 ">
                 <Image
                     source={{ uri: "https://links.papareact.com/wru" }}
                     className="h-7 w-7 bg-gray-300 rounded-full"
@@ -32,6 +39,18 @@ const HomeScreen = () => {
                     </Text>
                 </View>
                 <UserIcon size={35} color="#00ccbb" />
+            </View>
+
+            {/* Search  */}
+            <View className="flex-row space-x-2 items-center pb-2 mx-4">
+                <View className="flex-row flex-1 space-x-2 bg-gray-200 p-3">
+                    <SearchIcon color="gray" size={20} />
+                    <TextInput
+                        placeholder="Restaurants and cuisines"
+                        keyboardType="default"
+                    />
+                </View>
+                <AdjustmentsIcon size={20} color="#00ccbb" />
             </View>
         </SafeAreaView>
     );
