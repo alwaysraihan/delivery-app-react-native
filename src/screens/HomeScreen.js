@@ -1,7 +1,7 @@
 import {
     Image,
     SafeAreaView,
-    StyleSheet,
+    ScrollView,
     Text,
     TextInput,
     View,
@@ -14,6 +14,7 @@ import {
     SearchIcon,
     AdjustmentsIcon,
 } from "react-native-heroicons/outline";
+import HomeCategories from "../components/HomeCategories";
 const HomeScreen = () => {
     const navigation = useNavigation();
     useLayoutEffect(() => {
@@ -52,6 +53,17 @@ const HomeScreen = () => {
                 </View>
                 <AdjustmentsIcon size={20} color="#00ccbb" />
             </View>
+            {/* Body  */}
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                className="bg-gray-100 min-h-full"
+            >
+                {/* Catagories  */}
+
+                <HomeCategories />
+
+                {/* Features Rows offer  */}
+            </ScrollView>
         </SafeAreaView>
     );
 };
