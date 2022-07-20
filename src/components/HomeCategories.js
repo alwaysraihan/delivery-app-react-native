@@ -1,8 +1,22 @@
 import { View, ScrollView, Text, Image } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeScreenCategoresCard from "./HomeScreenCategoresCard";
+import sanityClient, { urlFor } from "../../sanity";
 
 const HomeCategories = () => {
+    const [categories, setCategories] = useState([]);
+    useEffect(() => {
+        sanityClient
+            .fetch(
+                `
+        *[_type=="category"]
+        `
+            )
+            .then((data) => {
+                setCategories(data);
+            });
+    }, []);
+
     return (
         <ScrollView
             contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
@@ -10,38 +24,13 @@ const HomeCategories = () => {
             showsHorizontalScrollIndicator={false}
         >
             {/* Categories card  */}
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
-            <HomeScreenCategoresCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing"
-            />
+            {categories.map((category) => (
+                <HomeScreenCategoresCard
+                    key={category._id}
+                    imgUrl={urlFor(category.image).width(200).url()}
+                    title={category.name}
+                />
+            ))}
         </ScrollView>
     );
 };
