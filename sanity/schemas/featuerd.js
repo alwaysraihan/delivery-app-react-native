@@ -1,11 +1,11 @@
 export default {
-    name: "dishes",
-    title: "Dish",
+    name: "featured",
+    title: "Featuerd",
     type: "document",
     fields: [
         {
             name: "name",
-            title: "Name of dish",
+            title: "Featured Category name",
             type: "string",
             validation: (Rule) => Rule.required(),
         },
@@ -22,10 +22,11 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
-            name: "image",
-            title: "Image of the Dish",
-            type: "image",
+            name: "restaurants",
+            title: "Restaurants",
+            type: "array",
             validation: (Rule) => Rule.required(),
+            of: [{ type: "reference", to: [{ type: "restaurant" }] }],
         },
     ],
 };

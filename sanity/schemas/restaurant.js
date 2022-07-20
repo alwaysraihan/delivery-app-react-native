@@ -16,14 +16,19 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
-            name: "Image",
+            name: "image",
             title: "Image of the Restaurant",
             type: "image",
             validation: (Rule) => Rule.required(),
         },
         {
-            name: "long",
+            name: "lat",
             title: "Latitude of the Restaurant",
+            type: "number",
+        },
+        {
+            name: "long",
+            title: "Longitude of the Restaurant",
             type: "number",
         },
         {

@@ -7,9 +7,10 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import category from "./category";
 import restaurant from "./restaurant";
 import dish from "./dish";
+import featuerd from "./featuerd";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
     name: "default",
-    types: schemaTypes.concat([restaurant, dish, category]),
+    types: schemaTypes.concat([restaurant, featuerd, dish, category]),
 });
