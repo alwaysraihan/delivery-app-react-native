@@ -1,5 +1,5 @@
 export default {
-    name: "dishes",
+    name: "dish",
     title: "Dish",
     type: "document",
     fields: [

@@ -60,5 +60,3 @@ const RestaurantCard = ({
 };
 
 export default RestaurantCard;
-
-const styles = StyleSheet.create({});

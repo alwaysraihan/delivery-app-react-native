@@ -59,7 +59,7 @@ export default {
             title: "Dishes",
             type: "array",
             validation: (Rule) => Rule.required(),
-            of: [{ type: "reference", to: [{ type: "category" }] }],
+            of: [{ type: "reference", to: [{ type: "dish" }] }],
         },
     ],
 };
