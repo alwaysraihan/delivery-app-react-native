@@ -6,8 +6,19 @@ import {
     MinusCircleIcon,
     PlusCircleIcon,
 } from "react-native-heroicons/outline";
-const DishRow = ({ key, id, name, description, price, image }) => {
+import { useDispatch, useSelector } from "react-redux";
+import {
+    addToBasket,
+    selectBasketItems,
+    selectBasketItemsWithId,
+} from "../../redux/features/basketSlice";
+const DishRow = ({ id, name, description, price, image }) => {
     const [isPressd, setIsPressd] = useState(false);
+    const dispatch = useDispatch();
+    const items = useSelector((state) => selectBasketItemsWithId(state, id));
+    const addItemToBasket = () => {
+        dispatch(addToBasket({ id, name, description, price, image }));
+    };
     return (
         <>
             <TouchableOpacity
@@ -42,8 +53,8 @@ const DishRow = ({ key, id, name, description, price, image }) => {
                         <TouchableOpacity>
                             <MinusCircleIcon color="#00CCBB" size={40} />
                         </TouchableOpacity>
-                        <Text>0</Text>
-                        <TouchableOpacity>
+                        <Text>{items.length}</Text>
+                        <TouchableOpacity onPress={addItemToBasket}>
                             <PlusCircleIcon color="#00CCBB" size={40} />
                         </TouchableOpacity>
                     </View>
