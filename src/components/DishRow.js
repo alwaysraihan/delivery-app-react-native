@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
     addToBasket,
+    removeFromBasket,
     selectBasketItems,
     selectBasketItemsWithId,
 } from "../../redux/features/basketSlice";
@@ -18,6 +19,10 @@ const DishRow = ({ id, name, description, price, image }) => {
     const items = useSelector((state) => selectBasketItemsWithId(state, id));
     const addItemToBasket = () => {
         dispatch(addToBasket({ id, name, description, price, image }));
+    };
+    const reomveItemFromBasket = () => {
+        if (!items.length > 0) return;
+        dispatch(removeFromBasket({ id }));
     };
     return (
         <>
@@ -50,7 +55,7 @@ const DishRow = ({ id, name, description, price, image }) => {
             {isPressd && (
                 <View className="bg-white px-4 ">
                     <View className="flex-row items-center space-x-2 pb-3">
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={reomveItemFromBasket}>
                             <MinusCircleIcon color="#00CCBB" size={40} />
                         </TouchableOpacity>
                         <Text>{items.length}</Text>
