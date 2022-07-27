@@ -12,6 +12,7 @@ import { selectdResturant } from "../../redux/features/resturantSlice";
 import {
     removeFromBasket,
     selectBasketItems,
+    selectBasketTotal,
 } from "../../redux/features/basketSlice";
 import { useSelector, useDispatch } from "react-redux";
 // import { useMemo } from "react";
@@ -24,6 +25,7 @@ const BasketScreen = () => {
     const navigation = useNavigation();
     const resturant = useSelector(selectdResturant);
     const items = useSelector(selectBasketItems);
+    const basketTotal= useSelector(selectBasketTotal)
     const [groupedItemsInBasket, setGroupItemsInBasket] = useState([]);
     const dispatch = useDispatch();
     if (items.length === 0) return null;
@@ -92,7 +94,7 @@ const BasketScreen = () => {
                                 <Text className="flex-1">{items[0]?.name}</Text>
                                 <Text className="text-gray-600">
                                     <Currency
-                                        quantity={items.length}
+                                        quantity={items[0]?.price}
                                         currency="BDT"
                                     />
                                 </Text>
@@ -109,6 +111,35 @@ const BasketScreen = () => {
                         )
                     )}
                 </ScrollView>
+                <View className="p-5 mt-5 space-y-4 bg-white">
+                 <View className="flex-row justify-between">
+                 <Text className="text-gray-400">SubTotal</Text>
+                                <Text className="text-gray-400">
+                                    <Currency
+                                        quantity={basketTotal}
+                                        currency="BDT"
+                                    />
+                                </Text>
+                    </View> 
+                    <View className="flex-row justify-between">
+                 <Text className="text-gray-400">Delivery Fee</Text>
+                                <Text className="text-gray-400">
+                                    <Currency
+                                        quantity={50}
+                                        currency="BDT"
+                                    />
+                                </Text>
+                    </View>   
+                    <View className="flex-row justify-between">
+                 <Text>Order Total</Text>
+                                <Text className="font-extrabold">
+                                    <Currency
+                                        quantity={basketTotal+50}
+                                        currency="BDT"
+                                    />
+                                </Text>
+                    </View> 
+                </View>
             </View>
         </SafeAreaView>
     );
