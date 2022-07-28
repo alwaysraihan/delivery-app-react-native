@@ -36,7 +36,6 @@ const BasketScreen = () => {
         }, {});
         setGroupItemsInBasket(groupedItems);
     }, [items]);
-    console.log(groupedItemsInBasket);
 
     // here useEffect and useMemo both we can use
     // useMemo(() => {

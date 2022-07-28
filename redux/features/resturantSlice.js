@@ -8,7 +8,7 @@ const initialState = {
         rating: null,
         genre: null,
         address: null,
-        shor_description: null,
+        short_description: null,
         dishes: null,
         long: null,
         lat: null,
