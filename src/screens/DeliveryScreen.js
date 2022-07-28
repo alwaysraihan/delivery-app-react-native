@@ -1,9 +1,8 @@
-import { View, Text, SafeAreaView, Image } from 'react-native'
+import { View, Text, SafeAreaView, Image,TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 import { selectdResturant } from '../../redux/features/resturantSlice'
-import { TouchableOpacity } from 'react-native-web'
 import { XIcon } from 'react-native-heroicons/outline'
 import MapView,  { Marker } from 'react-native-maps'
 import * as Progress from "react-native-progress"
@@ -37,7 +36,8 @@ const DeliveryScreen = () => {
         </View>
       </View>
     </SafeAreaView>
-    {/* <MapView
+
+   <MapView
     initialRegion={{
         latitude:restaurant.lat,
         longitude:restaurant.long,
@@ -57,7 +57,8 @@ description={restaurant.short_description}
 identifier="origin"
 pinColor="#00CCBB"
 />
-    </MapView> */}
+    </MapView>
+
     <SafeAreaView className="bg-white flex-row items-center space-x-5 h-28">
       <Image
       source={{uri:"https://links.papareact.com/wru"}}
